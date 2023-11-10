@@ -3,7 +3,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 # reading the csv data
-data = pd.read_csv('Data/JC-202201-citibike-tripdata.csv')
+data = pd.read_csv('./Data/20230411.csv')
 
 # for index, row in data.iterrows():
 #     if index < 10:
@@ -90,31 +90,31 @@ print("Data saved on Processed_Data.csv")
 
 print("Drawing Data Graph ....")
 
-import folium
+# import folium
 
-# Create a base map centered around the mean latitude and longitude of your data
-m = folium.Map(location=[data_filterd_cleaned['start_lat'].mean(), data['start_lng'].mean()], zoom_start=13)
+# # Create a base map centered around the mean latitude and longitude of your data
+# m = folium.Map(location=[data_filterd_cleaned['start_lat'].mean(), data['start_lng'].mean()], zoom_start=13)
 
-# Add markers for each start station
-for _, row in data_filterd_cleaned.iterrows():
-    folium.Marker(
-        [row['start_lat'], row['start_lng']], 
-        tooltip=row['start_station_name'],
-        # icon=folium.Icon(color='blue', icon='cloud')  # blue marker for start stations
-    ).add_to(m)
+# # Add markers for each start station
+# for _, row in data_filterd_cleaned.iterrows():
+#     folium.Marker(
+#         [row['start_lat'], row['start_lng']], 
+#         tooltip=row['start_station_name'],
+#         # icon=folium.Icon(color='blue', icon='cloud')  # blue marker for start stations
+#     ).add_to(m)
 
-    folium.Marker(
-        [row['end_lat'], row['end_lng']], 
-        tooltip=row['end_station_name'],
-        # icon=folium.Icon(color='red')  # red marker for end stations
-    ).add_to(m)
+#     folium.Marker(
+#         [row['end_lat'], row['end_lng']], 
+#         tooltip=row['end_station_name'],
+#         # icon=folium.Icon(color='red')  # red marker for end stations
+#     ).add_to(m)
 
-    # Add a line connecting start and end stations
-    folium.PolyLine([(row['start_lat'], row['start_lng']), 
-                     (row['end_lat'], row['end_lng'])], 
-                     color="blue", weight=2.5, opacity=1).add_to(m)
+#     # Add a line connecting start and end stations
+#     folium.PolyLine([(row['start_lat'], row['start_lng']), 
+#                      (row['end_lat'], row['end_lng'])], 
+#                      color="blue", weight=2.5, opacity=1).add_to(m)
 
-m.save('stations_map.html')
+# m.save('stations_map.html')
 
 
 # G = nx.from_pandas_edgelist(filtered_data, 'start_station_name', 'end_station_name', create_using=nx.DiGraph())

@@ -92,7 +92,7 @@ def create_map(stations, attribute, title):
             tooltip=f"{station.name}: {value}"
         ).add_to(m)
     
-    m.save(f"{title}.html")
+    m.save(f"./Graphs/{title}.html")
 
 # Usage:
 
